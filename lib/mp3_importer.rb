@@ -6,11 +6,7 @@ class MP3Importer
   end
 
   def files
-    files = []
-    Dir.new(self.path).each do |file|
-      files << file if file.length > 4
-    end
-    files
+     Dir.entries(@path).select!{ |file| file.end_with?("mp3") }
   end
 
   def import
